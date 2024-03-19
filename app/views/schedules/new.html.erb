@@ -1,0 +1,43 @@
+<h1>新規予定追加</h1>
+
+<%= form_with(model: @schedule, local: true) do |form| %>
+  <% if @schedule.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h4>
+      <ul>
+        <% @schedule.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_date, "開始日" %>
+    <%= form.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date, "終了日" %>
+    <%= form.date_field :end_date, class: "form-control", format: :default%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :all_day, "終日" %>
+    <%= form.check_box :all_day, class: "form-check-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :schedule_memo, "スケジュールメモ" %>
+    <%= form.text_area :schedule_memo, class: "form-control" %>
+  </div>
+
+  <%= form.submit "保存", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "一覧に戻る", schedules_path, class: "btn btn-secondary" %>
