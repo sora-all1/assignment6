@@ -1,0 +1,39 @@
+<h1><%= @schedule.title %></h1>
+
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td>タイトル:</td>
+      <td><%= @schedule.title %></td>
+    </tr>
+
+    <tr>
+      <td>開始日</td>
+      <td><%= @schedule.start_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+
+    <tr>
+      <td>終了日</td>
+      <td><%= @schedule.end_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+
+    <tr>
+      <td>終日</td>
+      <td><%= @schedule.all_day ? "○" : "" %></td>
+    </tr>
+
+    <tr>
+      <td>スケジュールメモ</td>
+      <td><%= @schedule.schedule_memo %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "編集", edit_schedule_path(@schedule), class: "btn btn-secondary" %>
+<%= link_to "一覧へ戻る", schedules_path, class: "btn btn-primary" %>

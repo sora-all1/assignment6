@@ -1,0 +1,39 @@
+<h1>予定編集</h1>
+
+<%= form_with(model: @schedule, local: true) do |form| %>
+  
+  <% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_date, "開始日" %>
+    <%= form.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date, "終了日" %>
+    <%= form.date_field :end_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :all_day, "終日" %>
+    <%= form.check_box :all_day, class: "form-check-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :schedule_memo, "スケジュールメモ" %>
+    <%= form.text_area :schedule_memo, class: "form-control" %>
+  </div>
+
+  <%= form.submit "保存", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "キャンセル", schedule_path(@schedule), class: "btn btn-secondary" %>
