@@ -1,15 +1,10 @@
 <h1>新規予定追加</h1>
 
 <%= form_with(model: @schedule, local: true) do |form| %>
-  <% if @schedule.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h4>
-      <ul>
-        <% @schedule.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
   <% end %>
 
   <div class="form-group">
@@ -37,7 +32,7 @@
     <%= form.text_area :schedule_memo, class: "form-control" %>
   </div>
 
-  <%= form.submit "保存", class: "btn btn-primary" %>
+  <%= form.submit "新規追加", class: "btn btn-primary" %>
 <% end %>
 
 <%= link_to "一覧に戻る", schedules_path, class: "btn btn-secondary" %>

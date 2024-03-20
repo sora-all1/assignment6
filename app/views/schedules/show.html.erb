@@ -1,5 +1,11 @@
 <h1><%= @schedule.title %></h1>
 
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
 <table class="table">
   <tbody>
     <tr>
